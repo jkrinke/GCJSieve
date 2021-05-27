@@ -2,14 +2,24 @@ import csv
 import pandas
 import sys
 import os
+import hashlib
 
 # Extract all source files with the given ending.
 def entry(fname, content, ending):
     if fname.endswith(ending):
         # Rearrange the path structure.
         dirs = fname.split('/')
+        # 0: "gcj"
+        # 1: year
+        # 2: round
+        # 3: user
+        # 4: task
+        # 5: solution
+        # 6: "extracted"
+        # User names are case-sensitive, add a hash to allow case-insensitive file systems.
+        uname = dirs[3] + "_" + hashlib.blake2s(dirs[3].encode("utf-8"), digest_size=4).hexdigest()
         oldDir = os.path.join(dirs[0], dirs[1], dirs[2], dirs[3], dirs[4])
-        newDir = os.path.join(dirs[0], dirs[1] + '-' + dirs[2] + '-' + dirs[4], dirs[3])
+        newDir = os.path.join(dirs[0], dirs[1] + '-' + dirs[2] + '-' + dirs[4], uname)
         fname = fname.replace(oldDir, newDir)
         # Replace all '.' with '_' in folder names.
         # ('.' in folder names cause all kinds of trouble.)
