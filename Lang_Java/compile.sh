@@ -4,10 +4,13 @@ BASE="$PWD"
 
 cd gcj
 
+export LANG=C
+
 for i in */*/*/*; do
     (
         echo  "# $i" #>&2
 		cd "$i"
+		find . -type f
 		if javac *.java 2>&1; then
 	    	if find . -name '*.class'; then
 		    	echo  "# COMPILE SUCCESS: $i"
