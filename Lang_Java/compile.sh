@@ -10,10 +10,11 @@ for i in */*/*/*; do
     (
         echo  "# $i" #>&2
 		cd "$i"
-		find . -type f
+		find . -type f | sort
 		if javac *.java 2>&1; then
-	    	if find . -name '*.class'; then
+	    	if find . -name '*.class' > /dev/null; then
 		    	echo  "# COMPILE SUCCESS: $i"
+				find . -name '*.class' | sort
 		    	if [ `find . -type d | wc -l` -ne '1' ]; then
 					echo "DIRECTORY GENERATED."
 					exit
