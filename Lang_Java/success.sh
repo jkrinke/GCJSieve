@@ -6,6 +6,9 @@
 find gcj -name '*.class' -delete
 find gcj -empty -delete
 
+# Then delete the old results.
+rm -rf gcj50java gcjD50java
+
 # Keep only the latest successful attempt.
 IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
     s=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\1:'`
@@ -18,8 +21,8 @@ IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
     # Earlier successful attempts are overwritten."
     rm -rf "$M" "$D"
     mkdir -p "$M" "$D"
-    cp -r "gcj/$s/$u/$a/extracted/" "$M"
-    cp -r "gcj-d/$s/$u/$a/extracted/" "$D"
+    cp -r "gcj/$s/$u/$a/extracted/." "$M"
+    cp -r "gcj-d/$s/$u/$a/extracted/." "$D"
 done
 
 # Done.
