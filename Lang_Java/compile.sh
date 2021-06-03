@@ -11,7 +11,8 @@ for i in */*/*/*; do
         echo  "# $i" #>&2
 		cd "$i"
 		find . -type f | sort
-		if javac *.java 2>&1; then
+		# Compile all source files with Java 8.
+		if javac --release 8 *.java 2>&1; then
 	    	if find . -name '*.class' > /dev/null; then
 		    	echo  "# COMPILE SUCCESS: $i"
 				find . -name '*.class' | sort
