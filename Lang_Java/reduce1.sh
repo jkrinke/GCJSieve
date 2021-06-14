@@ -1,5 +1,5 @@
 #!/bin/sh
 
-../_reduce.sh gcj 20 '^  [ 1]'
+../_reduce.sh gcj 30 '^ *[ 12][0-9] '
 
 # Done.
