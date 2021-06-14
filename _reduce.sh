@@ -6,12 +6,13 @@ cd "$1"
 
 echo "Remove small tasks..."
 
-# Remove all tasks with less than 50 submissions.
+# Remove all tasks with less than X submissions.
 
 for i in *; do
-    if [ `ls $i | wc -l` -lt 50 ]; then
-	echo "Removing $i:" `ls $i | wc -l`
-	rm -rf $i
+    lines=`ls $i | wc -l | tr -d ' '`
+    if [ "$lines" -lt "$2" ]; then
+        echo "Removing $i ($lines):" `ls $i | wc -l`
+        rm -rf $i
     fi
 done
 
@@ -26,7 +27,7 @@ done
 echo "Remove users with few submissions..."
 
 # Extract the users with just a few submissions.
-sort $USERS.lst | uniq -c | sort -n | grep '^ *[1-3] ' > $USERS.sorted
+sort $USERS.lst | uniq -c | sort -n | grep "$3" > $USERS.sorted
 
 if test -s $USERS.sorted; then
     # Remove submissions from such users.

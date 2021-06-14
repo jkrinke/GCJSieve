@@ -1,5 +1,5 @@
 #!/bin/sh
 
-../_reduce.sh gcj
+../_reduce.sh gcj 10 "^  [ ]"
 
 # Done.
