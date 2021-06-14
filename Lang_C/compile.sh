@@ -6,17 +6,21 @@ BASE="$PWD"
 
 cd gcj
 
+export LANG=C
+
 # Traverse all folders in which submissions are located.
 for i in */*/*/*; do
     (
         echo  "# $i"
 	cd "$i"
+	find . -type f | sort
 	# Attempt to compile all source files in this folder.
 	# if gcc *.c 2>&1; then
 	if clang -w -S -emit-llvm -c *.c 2>&1; then
 	    # Ensure that an executable has been generated.
-	    if find . -name '*.ll'; then
+	    if find . -name '*.ll' > /dev/null; then
 		    echo  "# COMPILE SUCCESS: $i"
+			find . -name '*.ll' | sort
 		    mkdir -p $BASE/gcj-d/$i
             cfile=`echo *.ll | sed 's/\(.*\.\)ll/\1/'`
             if timeout 1m ~/shared/src/llvm2c -o $BASE/gcj-d/$i/"$cfile"c "$cfile"ll 2>&1; then
