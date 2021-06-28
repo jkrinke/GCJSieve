@@ -11,9 +11,14 @@ rm -rf gcj50c gcjD50c
 
 # Keep only the latest successful attempt.
 IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
+    echo "|i=$i|"
     s=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\1:'`
     u=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\2:'`
     a=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\3:'`
+
+    echo "s=$s"
+    echo "u=$u"
+    echo "a=$a"
 
     # Original sources.
     M="gcj50c/$s/$u"
