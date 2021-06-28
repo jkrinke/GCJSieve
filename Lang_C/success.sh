@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# NOTE: Need to make sure this script is run via bash. For example, bash ./success.sh
+
 # Extract all submissions for which the compilation was successful.
 
 # First, delete llvm files and empty folders.
