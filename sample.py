@@ -7,10 +7,10 @@ from os.path import join
 # In the example below, a subset of 25 tasks with 25 submissions each is generated.
 
 # Source folder
-s = "gcj50c"
+s = "subset"
 
 # Destination folder
-d = "gcj50c-25"
+d = "sample-25"
 
 # Setting the random seed to create a deterministic shuffle.
 # By setting the seed, the actual generated sub-subset is repeatable.

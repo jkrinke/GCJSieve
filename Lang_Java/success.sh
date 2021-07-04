@@ -7,7 +7,7 @@ find gcj -name '*.class' -delete
 find gcj -empty -delete
 
 # Then delete the old results.
-rm -rf gcj50java gcjD50java
+rm -rf subset subsetD
 
 # Keep only the latest successful attempt.
 IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
@@ -15,9 +15,9 @@ IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
     u=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\2:'`
     a=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\3:'`
     # Original sources.
-    M="gcj50java/$s/$u"
+    M="subset/$s/$u"
     # Decompiled sources.
-    D="gcjD50java/$s/$u"
+    D="subset-d/$s/$u"
     # Earlier successful attempts are overwritten."
     rm -rf "$M" "$D"
     mkdir -p "$M" "$D"

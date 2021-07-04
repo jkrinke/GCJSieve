@@ -7,7 +7,7 @@ find gcj -name '*.ll' -delete
 find gcj -empty -delete
 
 # Then delete the old results.
-rm -rf gcj50c gcjD50c
+rm -rf subset subset-d
 
 # Keep only the latest successful attempt.
 IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
@@ -21,9 +21,9 @@ IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
     echo "a=$a"
 
     # Original sources.
-    M="gcj50c/$s/$u"
+    M="subset/$s/$u"
     # Decompiled sources.
-    D="gcjD50c/$s/$u"
+    D="subset-d/$s/$u"
 
     # Earlier successful attempts are overwritten."
     rm -rf "$M" "$D"

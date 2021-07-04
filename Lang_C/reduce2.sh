@@ -1,6 +1,8 @@
 #!/bin/sh
 
-../_reduce.sh gcj50c
-../_reduce.sh gcjD50c
+../_reduce.sh subset 10 "^ *[ ][0-9] "
+../_reduce.sh subset 10 "^ *10 "
+../_reduce.sh subset-d 10 "^ *[ ][0-9] "
+../_reduce.sh subset-d 10 "^ *10 "
 
 # Done.
