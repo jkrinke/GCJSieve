@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Extract all submissions for which the compilation was successful.
 

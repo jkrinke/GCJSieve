@@ -1,6 +1,4 @@
-#!/bin/sh
-
-# NOTE: Need to make sure this script is run via bash. For example, bash ./success.sh
+#!/bin/bash
 
 # Extract all submissions for which the compilation was successful.
 
