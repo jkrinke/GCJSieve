@@ -10,7 +10,7 @@ echo "Remove small tasks..."
 
 for i in *; do
     lines=`ls $i | wc -l | tr -d ' '`
-    if [ "$lines" -lt "$2" ]; then
+    if [ "$lines" -le "$2" ]; then
         echo "Removing $i ($lines):" `ls $i | wc -l`
         rm -rf $i
     fi
