@@ -10,10 +10,10 @@ find gcj -empty -delete
 rm -rf subset subsetD
 
 # Keep only the latest successful attempt.
-IFS=$'\n'; for i in `grep '# COMPILE SUCCESS:' compile.log`; do
-    s=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\1:'`
-    u=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\2:'`
-    a=`echo $i | sed -e 's:^# COMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\3:'`
+IFS=$'\n'; for i in `grep '# DECOMPILE SUCCESS:' compile.log`; do
+    s=`echo $i | sed -e 's:^# DECOMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\1:'`
+    u=`echo $i | sed -e 's:^# DECOMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\2:'`
+    a=`echo $i | sed -e 's:^# DECOMPILE SUCCESS\: \([^/]*\)/\([^/]*\)/\([^/]*\)/\([^/]*\)$:\3:'`
     # Original sources.
     M="subset/$s/$u"
     # Decompiled sources.
