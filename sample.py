@@ -19,6 +19,7 @@ random.seed(25)
 
 # Read all folders inside the source folder and generate a shuffle.
 tasks = os.listdir(s)
+tasks.sort()
 random.shuffle(tasks)
 # Read the first 25 folders of the shuffle and copy 25 random sub-folders to the destination.
 for t in tasks[0:25]:
@@ -27,6 +28,7 @@ for t in tasks[0:25]:
     targetDir = join(d, t)
     # Read all folders or files and generate a shuffle.
     entries = os.listdir(sourceDir)
+    entries.sort()
     random.shuffle(entries)
     # Copy the first 25 folders or files to the destination.
     for u in entries[0:25]:
