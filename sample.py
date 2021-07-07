@@ -1,16 +1,25 @@
+#!/usr/bin/env python
+
 import random
 import os
+import sys
 import shutil
 from os.path import join
 
-# Example to create sub-subsets of a specific size.
-# In the example below, a subset of 25 tasks with 25 submissions each is generated.
+# Create sample sub-subsets of a specific size.
+# A sample subset of t_no tasks with s_no submissions each is generated.
 
 # Source folder
-s = "subset"
+s = sys.argv[1]
 
 # Destination folder
-d = "sample-25"
+d = sys.argv[2]
+
+# Number of tasks
+t_no = int(sys.argv[3])
+
+# Number of submissions per task
+s_no = int(sys.argv[4])
 
 # Setting the random seed to create a deterministic shuffle.
 # By setting the seed, the actual generated sub-subset is repeatable.
@@ -21,8 +30,8 @@ random.seed(25)
 tasks = os.listdir(s)
 tasks.sort()
 random.shuffle(tasks)
-# Read the first 25 folders of the shuffle and copy 25 random sub-folders to the destination.
-for t in tasks[0:25]:
+# Read the first t_no folders of the shuffle and copy s_no random sub-folders to the destination.
+for t in tasks[0:t_no]:
     sourceDir = join(s, t)
     print(sourceDir)
     targetDir = join(d, t)
@@ -30,8 +39,8 @@ for t in tasks[0:25]:
     entries = os.listdir(sourceDir)
     entries.sort()
     random.shuffle(entries)
-    # Copy the first 25 folders or files to the destination.
-    for u in entries[0:25]:
+    # Copy the first s_no folders or files to the destination.
+    for u in entries[0:s_no]:
         shutil.copytree(join(sourceDir, u), join(targetDir, u), dirs_exist_ok=True)
 
 # Done.
