@@ -7,7 +7,7 @@ find gcj -name '*.class' -delete
 find gcj -empty -delete
 
 # Then delete the old results.
-rm -rf subset subsetD
+rm -rf subset subset-d
 
 # Keep only the latest successful attempt.
 IFS=$'\n'; for i in `grep '# DECOMPILE SUCCESS:' compile.log`; do
