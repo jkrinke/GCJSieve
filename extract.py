@@ -35,7 +35,7 @@ def entry(fname, content, ending):
         # Create file
         with open(fname, "w") as f:
             try:
-                f.write(str(content))
+                f.write(str(content).replace("\n ","\n"))
             except:
                 print("Failed: ", fname)
                 print(">>" + str(content) + "<<")
