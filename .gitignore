@@ -2,10 +2,14 @@ Lang_C/Lang_C
 Lang_C/compile.log
 Lang_C/gcj
 Lang_C/gcj-d
-Lang_C/gcj-orig
-Lang_C/gcjD50c
+Lang_C/sample-15
+Lang_C/sample-at-15
+Lang_C/sample-d-15
+Lang_C/sample-d-at-15
 Lang_C/subset
+Lang_C/subset-at
 Lang_C/subset-d
+Lang_C/subset-d-at
 Lang_C/users.lst
 Lang_C/users.sorted
 Lang_Java/compile.log
@@ -19,7 +23,6 @@ Lang_Java/subset
 Lang_Java/subset
 Lang_Java/subset-at
 Lang_Java/subset-d
-Lang_Java/subset-d
 Lang_Java/subset-d-at
 Lang_Java/users.lst
 Lang_Java/users.sorted
@@ -31,9 +34,7 @@ Lang_Python/sample-at-25
 Lang_Python/sample-d-25
 Lang_Python/sample-d-at-25
 Lang_Python/subset
-Lang_Python/subset
 Lang_Python/subset-at
-Lang_Python/subset-d
 Lang_Python/subset-d
 Lang_Python/subset-d-at
 Lang_Python/users.lst
